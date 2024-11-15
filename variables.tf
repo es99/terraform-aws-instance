@@ -1,58 +1,68 @@
 variable "ami" {
   type        = string
-  description = "O usuário vai escolher entre windows ou linux"
+  description = "AMI"
+}
+
+variable "number_instances" {
+  type        = number
+  default     = 1
+  description = "Number of instances that will be created"
 }
 
 variable "instance_type" {
   type        = string
-  description = "O tipo de instancia."
+  description = "Instance Type"
 }
 
 variable "instance_name" {
   type        = string
-  description = "tag nome."
+  description = "Name of the Instance (tag Name)"
 }
 
 variable "environment" {
   type        = string
-  description = "'prod' or 'dev' depending of environment that instance ec2 up."
+  description = "Environment, ex: 'Prod' or 'Dev'"
 }
 
 variable "owner" {
   type        = string
-  description = "representa quem está criando o recurso, inserir o usuário."
+  description = "Owner of the resource"
 }
 
 variable "key_name" {
   type        = string
-  default     = "tf-testes"
-  description = "Key name que descriptografa a senha de administrator."
+  description = "Key name password for remote access"
 }
 
 variable "iam_role" {
   type        = string
-  default     = "INFOPUBLIC_WindowsServersEC2"
-  description = "IAM Role em que a instancia assumirá."
+  description = "IAM Role"
 }
 
 variable "security_groups" {
   type        = list(string)
-  description = "SG da instancia"
+  description = "Instance Security Group"
 }
 
 variable "subnet_id" {
   type        = string
-  description = "Subnet ID da rede da instancia."
+  description = "Network subnet Id"
 }
 
 variable "volume_size" {
   type        = number
   default     = 60 //em GiB
-  description = "Espaço em disco do ebs root"
+  description = "Volume Size EBS Root"
 }
 
-variable "extra_disk" {
-  type        = bool
-  default     = false
-  description = "if true, available extra disk to instance."
+variable "throughput" {
+  type        = number
+  default     = 125
+  description = "Throughput EBS root block device"
+}
+
+variable "volume_type" {
+  type        = string
+  default     = "gp2"
+  description = "EBS root block device volume type"
 }

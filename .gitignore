@@ -1,1 +1,3 @@
 testes/
+.terraform/
+.terraform.lock.hcl
